@@ -42,29 +42,15 @@ public class MeterDataService {
 	    Timestamp endTimestamp = Timestamp.from(Instant.ofEpochSecond(endDateEpoch));
         switch(meterType) {
 		case "LVP_Meter":
-			
 			return aggregationrepository.findFilteredData(colony, community, subcommunity, site, startTimestamp,  endTimestamp, pageable);
-
-		
 		case "LVP_SubMeter":
-			 
 			return submeterrepository.findFilteredData(colony, community, subcommunity, site, startTimestamp,  endTimestamp, pageable);
-			
 		case "Water_Meter":
-		    
-		    return watermeterrepository.findFilteredData(colony, community, subcommunity, site, startTimestamp,  endTimestamp, pageable);
-		    
+		         return watermeterrepository.findFilteredData(colony, community, subcommunity, site, startTimestamp,  endTimestamp, pageable);
 		case"Water_SubMeter":
-			 
 			 return watersubmeterrepository.findFilteredData(colony, community, subcommunity, site, startTimestamp,  endTimestamp, pageable);
-			
 		default:
 			throw new IllegalArgumentException("Invalid-Type");
-	}
-		
-	
+	}		
+}	
 }
-	
-
-
-	}
