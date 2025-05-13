@@ -46,26 +46,18 @@ public class LVPSubmetersRespository {
         if (!CollectionUtils.isEmpty(community)) {
             predicates.add(root.get("community").in(community));
         }
-
         if (!CollectionUtils.isEmpty(subcommunity)) {
             predicates.add(root.get("subCommunity").in(subcommunity));
         }
-
         if (!CollectionUtils.isEmpty(site)) {
             predicates.add(root.get("site").in(site));
         }
-
         cq.select(root).where(predicates.toArray(new Predicate[0]));
-
-        
         Query countQuery = entityManager.createQuery(cq);
         long totalRecords = countQuery.getResultList().size();
-
-       
         Query query = entityManager.createQuery(cq);
         query.setFirstResult((int) pageable.getOffset());
         query.setMaxResults(pageable.getPageSize());
-
         List<LVPSubMeter> resultList = query.getResultList();
 
         return new PageImpl<>(resultList, pageable, totalRecords);
