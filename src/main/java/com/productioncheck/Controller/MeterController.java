@@ -27,19 +27,16 @@ public class MeterController {
 		if (requestDTO == null) {
 	        return ResponseEntity.badRequest().body("Request DTO is missing.");
 	    }
-
 	    if (requestDTO.getStartDate() == null || requestDTO.getEnddate() == null) {
 	        return ResponseEntity.badRequest().body("Start date or End date is missing.");
 	    }
-
 	    Pageable pageable = PageRequest.of(page, size, Sort.by("datetime").descending());
 
 	    try {
 	    	Object result = meterdataservice.fetchData(requestDTO, pageable);
 
 	        return ResponseEntity.ok(result);
-	    } catch (Exception e) {
-	       
+	    } catch (Exception e) { 
 	        return ResponseEntity.status(500).body("An error occurred while fetching data: " + e.getMessage());
 	    }
 	}
