@@ -11,22 +11,17 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.CollectionUtils;
-
 import com.productioncheck.beans.LVPMeter;
-
 @Repository
 public class LVPMeterDataRepository {
-
-    @PersistenceContext
+ @PersistenceContext
     private EntityManager entityManager;
-
-    public Page<LVPMeter> findFilteredData(
+   public Page<LVPMeter> findFilteredData(
             List<String> colony,
             List<String> community,
             List<String> subcommunity,
